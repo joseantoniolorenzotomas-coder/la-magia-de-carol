@@ -1,0 +1,832 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    color: #10201f;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-image: url("img/imagessuelofondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+header.cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #2dd48a 0%, #5b39d3 48%, #af3cc0 100%);
+    color: #f7f1f6;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.marca img {
+    width: 90px;
+    height: auto;
+    border-radius: 1rem;
+    border: 2px solid rgba(255,255,255,0.24);
+}
+
+.marca h1 {
+    margin: 0;
+    font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+    letter-spacing: 0.06em;
+}
+
+.marca p {
+    margin: 0.35rem 0 0;
+    color: #dfe6e2;
+}
+
+.menu-principal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.menu-principal a {
+    padding: 0.85rem 1rem;
+    border-radius: 999px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.menu-principal a:hover,
+.menu-principal a:focus-visible {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-1px);
+}
+
+main#content {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+}
+
+.seccion {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 24px 70px rgba(17, 44, 24, 0.12);
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+}
+
+.seccion-destacada {
+    background: linear-gradient(135deg, rgba(45, 212, 138, 0.95), rgba(92, 52, 210, 0.95));
+    color: #fff;
+}
+
+.seccion-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero-texto .tagline {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255,255,255,0.32);
+}
+
+.hero-texto h2 {
+    margin: 0;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 0.95;
+}
+
+.hero-texto p {
+    margin: 1.5rem 0 2rem;
+    max-width: 38rem;
+    line-height: 1.85;
+    color: #2f473f;
+}
+
+.boton-principal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.8rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2dd48a 0%, #8a40e6 100%);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 18px 40px rgba(88, 25, 126, 0.24);
+}
+
+.boton-principal:hover,
+.boton-principal:focus-visible {
+    transform: translateY(-2px);
+}
+
+.hero-imagen {
+    overflow: hidden;
+    border-radius: 2rem;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.18);
+}
+
+.hero-imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.seccion h2 {
+    margin-top: 0;
+    font-size: clamp(2rem, 2.5vw, 2.6rem);
+}
+
+.seccion-contenido p {
+    line-height: 1.9;
+    color: inherit;
+}
+
+.grid-trabajos {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin-top: 1.75rem;
+}
+
+.tarjeta-trabajo {
+    border-radius: 1.8rem;
+    overflow: hidden;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 14px 30px rgba(16, 32, 31, 0.1);
+}
+
+.tarjeta-trabajo img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.tarjeta-trabajo h3 {
+    margin: 1rem;
+    font-size: 1.1rem;
+}
+
+.galeria-imagenes {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    margin-top: 1.5rem;
+}
+
+.galeria-imagenes button {
+    aspect-ratio: 4 / 3;
+    min-width: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0.5rem;
+    background: #e8ece9;
+    cursor: zoom-in;
+}
+
+.galeria-imagenes img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+}
+
+.galeria-imagenes button:hover img,
+.galeria-imagenes button:focus-visible img {
+    transform: scale(1.04);
+}
+
+.titulo-carrusel {
+    margin: 2rem 0 1rem;
+}
+
+.carrusel-mesas {
+    position: relative;
+    width: 100%;
+    height: clamp(280px, 52vw, 620px);
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: #e8ece9;
+}
+
+.carrusel-foto {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+.carrusel-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carrusel-control {
+    position: absolute;
+    top: 50%;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    transform: translateY(-50%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    background: rgba(16, 32, 31, 0.78);
+    color: #fff;
+    cursor: pointer;
+}
+
+.carrusel-control:hover,
+.carrusel-control:focus-visible {
+    background: #c0076b;
+}
+
+.carrusel-anterior {
+    left: 1rem;
+}
+
+.carrusel-siguiente {
+    right: 1rem;
+}
+
+.carrusel-contador {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.25rem;
+    background: rgba(16, 32, 31, 0.78);
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+}
+
+.visor-imagen {
+    position: relative;
+    max-width: 94vw;
+    max-height: 92vh;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+}
+
+.visor-imagen::backdrop {
+    background: rgba(10, 17, 15, 0.88);
+}
+
+.visor-imagen img {
+    width: auto;
+    max-width: 94vw;
+    height: auto;
+    max-height: 88vh;
+    object-fit: contain;
+}
+
+.visor-cerrar {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(16, 32, 31, 0.85);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.historias-publicadas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+}
+
+.historia-publicada {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(16, 32, 31, 0.12);
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.historia-publicada > img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: #e8ece9;
+}
+
+.historia-contenido {
+    padding: 1rem;
+}
+
+.historia-contenido time {
+    color: #53635c;
+    font-size: 0.875rem;
+}
+
+.historia-contenido h3 {
+    margin: 0.5rem 0;
+}
+
+.historia-contenido p {
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+.historia-eliminar,
+.formulario-publicacion button {
+    width: fit-content;
+    padding: 0.7rem 1rem;
+    border: 0;
+    border-radius: 0.35rem;
+    background: #0f542e;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.historia-eliminar:hover,
+.historia-eliminar:focus-visible,
+.formulario-publicacion button:hover,
+.formulario-publicacion button:focus-visible {
+    background: #c0076b;
+}
+
+.acceso-administracion {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(16, 32, 31, 0.16);
+}
+
+.acceso-administracion summary {
+    width: fit-content;
+    color: #204832;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.formulario-publicacion {
+    display: grid;
+    width: min(100%, 480px);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.formulario-publicacion[hidden],
+.cerrar-sesion[hidden] {
+    display: none;
+}
+
+.formulario-publicacion label {
+    display: grid;
+    gap: 0.4rem;
+    font-weight: 600;
+}
+
+.formulario-publicacion input,
+.formulario-publicacion textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(16, 32, 31, 0.24);
+    border-radius: 0.35rem;
+    background: #fff;
+}
+
+.formulario-publicacion input[type="file"] {
+    padding: 0.5rem;
+}
+
+.cerrar-sesion {
+    margin-top: 1rem;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid rgba(16, 32, 31, 0.3);
+    border-radius: 0.35rem;
+    background: transparent;
+    color: #10201f;
+    cursor: pointer;
+}
+
+.estado-historias,
+.estado-administracion {
+    min-height: 1.5em;
+    color: #204832;
+}
+
+.contacto-contenedor {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr minmax(280px, 440px);
+    align-items: start;
+}
+
+.formulario-contacto {
+    display: grid;
+    gap: 1rem;
+}
+
+.formulario-contacto label {
+    display: grid;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(15, 84, 46, 0.2);
+    background: rgba(255,255,255,0.95);
+    resize: vertical;
+}
+
+.formulario-contacto button {
+    width: fit-content;
+    padding: 1rem 1.8rem;
+    border: none;
+    border-radius: 999px;
+    background: #c0076b;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    color: #f1f1f1;
+    font-size: 0.95rem;
+    padding: 20px;
+}
+
+.btn-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2dd48a, #6c28e1);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 20px 50px rgba(41, 28, 106, 0.35);
+    z-index: 30;
+}
+
+.btn-whatsapp img {
+    width: 40px;
+    height: 40px;
+}
+
+.varita-chat-wrapper {
+    position: fixed;
+    top: 20vh;
+    left: auto;
+    right: 1.25rem;
+    bottom: auto;
+    display: grid;
+    gap: 0.85rem;
+    align-items: end;
+    z-index: 30;
+    will-change: left, top;
+    transition: left 1s ease, top 1s ease;
+}
+
+.btn-varita {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: none;
+    transition: transform 0.2s ease;
+    padding: 0;
+}
+
+.btn-varita img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.btn-varita:hover,
+.btn-varita:focus-visible {
+    transform: scale(2);
+}
+
+.varita-bocadillo {
+    position: absolute;
+    right: 8px;
+        bottom: calc(100% + 4px);
+    background: rgba(43, 228, 182, 0.96);
+    color: #1e3d2c;
+    padding: 0.65rem 0.85rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(16, 32, 31, 0.12);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+    max-width: 180px;
+    transform: translateY(2px) scale(0.98);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    pointer-events: none;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    position: absolute;    /* Lo situamos justo encima de la varita */
+    bottom: 100%; 
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontalmente sobre el ícono */
+    margin-bottom: 10px; /* Separación vertical */
+    
+    /* Evita que rompa línea o cree scroll extra */
+    white-space: nowrap; 
+    
+    /* Estado inicial: oculto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+/* Cuando se añade la clase .visible desde JS */
+#varitaBocadillo.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.chatbot {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: min(340px, calc(100vw - 2rem));
+    max-height: 420px;
+    padding: 1rem;
+    border-radius: 1.8rem;
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10000; /* Queda por encima de la varita si coinciden */
+    overflow: hidden;
+    display: grid;
+    gap: 0.8rem;
+}
+
+#chatbot.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+.chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(16,32,31,0.12);
+}
+
+.chatbot-header span {
+    font-weight: 700;
+}
+
+.btn-close {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(15,84,46,0.12);
+    color: #10201f;
+    cursor: pointer;
+}
+
+.chatbot-messages {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    overflow-y: auto;
+    max-height: 220px;
+}
+
+.chatbot-message {
+    padding: 0.95rem 1rem;
+    border-radius: 1.25rem;
+    line-height: 1.6;
+}
+
+.chatbot-message.bot {
+    background: #f4fcf7;
+    color: #204832;
+    justify-self: start;
+}
+
+.chatbot-message.user {
+    background: #e7e7f8;
+    color: #12243d;
+    justify-self: end;
+}
+
+.chatbot-action {
+    display: inline-flex;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 0.65rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.35rem;
+    background: #0f542e;
+    color: #fff;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+}
+
+.chatbot-action:hover,
+.chatbot-action:focus-visible {
+    background: #c0076b;
+    text-decoration: underline;
+}
+
+.chatbot-form {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.chatbot-form input {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(15,84,46,0.16);
+}
+
+.chatbot-form button {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border: none;
+    border-radius: 999px;
+    background: #c0076b;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .seccion-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .contacto-contenedor {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    header.cabecera {
+        padding: 1rem;
+    }
+
+    .menu-principal {
+        justify-content: center;
+    }
+
+    .seccion {
+        padding: 1.5rem;
+    }
+}
+
+#varitaWrapper {
+    position: fixed;
+    /* La transición debe durar bastante tiempo para que el viaje sea lento */
+    transition: left 8s linear, top 8s linear;
+    will-change: left, top;
+    z-index: 9999;
+}
+
+/* 
+ Usamos 'transform: translate' en lugar de top/left.
+ Esto usa la GPU del navegador, garantizando 60fps súper suaves sin tirones.
+*/
+@keyframes flotarLaterales {
+    0% {
+        /* Borde Izquierdo - Arriba */
+        transform: translate(5vw, 10vh) rotate(-5deg);
+    }
+    20% {
+        /* Borde Izquierdo - Abajo */
+        transform: translate(3vw, 65vh) rotate(8deg);
+    }
+    40% {
+        /* Transición lenta cruzando hacia Borde Derecho - Centro */
+        transform: translate(82vw, 40vh) rotate(-12deg);
+    }
+    65% {
+        /* Borde Derecho - Arriba */
+        transform: translate(85vw, 15vh) rotate(6deg);
+    }
+    85% {
+        /* Borde Derecho - Abajo */
+        transform: translate(80vw, 70vh) rotate(-4deg);
+    }
+    100% {
+        /* Regresa al punto cercano al inicio */
+        transform: translate(6vw, 20vh) rotate(5deg);
+    }
+}
+
+/* Si el usuario pasa el ratón por encima, la congelamos suavemente para que pueda hacer clic fácilmente */
+#varitaWrapper:hover {
+    animation-play-state: paused;
+}
+
+#chatMensajesContenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.mensaje-chat {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+/* Estilo para los mensajes del USUARIO (alineados a la derecha) */
+.mensaje-chat.usuario {
+    align-self: flex-end;
+    background-color: #ff6b81; /* O el color corporativo de tu marca */
+    color: white;
+    border-bottom-right-radius: 2px;
+}
+
+/* Estilo para las respuestas del BOT (alineadas a la izquierda) */
+.mensaje-chat.bot {
+    align-self: flex-start;
+    background-color: #f1f2f6;
+    color: #2f3542;
+    border-bottom-left-radius: 2px;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="empresa dedicada a la creacion de mesas dulces tematicas para eventos especiales">
+    <title>La Magia de Carol</title>
+    <link rel="stylesheet" href="stilo.css" />
+</head>
+<body>
+    <a href="https://wa.me/34654160403?text=Hola%20quiero%20informaci%C3%B3n"
+       class="btn-whatsapp"
+       target="_blank"
+       aria-label="Abrir WhatsApp">
+        <img width="40" src="img/logowat.png" alt="WhatsApp" />
+    </a>
+
+    <header class="cabecera">
+        <div class="marca">
+            <img src="img/logo_la_magia_de_carol.png" alt="Logo de La Magia de Carol" />
+            <div>
+                <h1>La Magia de Carol</h1>
+                <p>Mesas dulces temáticas para celebraciones inolvidables</p>
+            </div>
+        </div>
+        <nav class="menu-principal" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="sobre-mi.html">Mi historia</a>
+            <a href="mistrabajos.html">Mis trabajos</a>
+            <a href="galeria.html">Galería</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main id="content">
+        <section class="seccion seccion-hero">
+            <div class="hero-texto">
+                <span class="tagline">Haz tu evento mágico</span>
+                <h2>Bienvenido a tus sueños</h2>
+                <p>Descubre la magia de nuestras mesas dulces temáticas para bodas, cumpleaños, comuniones y todos tus momentos especiales.</p>
+                <a class="boton-principal" href="contacto.html">Quiero mi mesa temática</a>
+            </div>
+            <div class="hero-imagen">
+                <img src="img/mesa1.jpg" alt="Mesa dulce temática" />
+            </div>
+        </section>
+
+        <section class="seccion seccion-blanca">
+            <div class="seccion-contenido">
+                <h2>Explora el mundo de Carol</h2>
+                <p>Visita cada sección para conocer mi historia, ver trabajos reales, descubrir la galería de mesas y ponerte en contacto.</p>
+            </div>
+            <div class="grid-trabajos">
+                <article class="tarjeta-trabajo">
+                    <img src="img/mesa2.jpg" alt="Mi historia" />
+                    <h3><a href="sobre-mi.html">Mi historia</a></h3>
+                </article>
+                <article class="tarjeta-trabajo">
+                    <img src="img/mesa3.jpg" alt="Mis trabajos" />
+                    <h3><a href="mistrabajos.html">Mis trabajos</a></h3>
+                </article>
+                <article class="tarjeta-trabajo">
+                    <img src="img/mesa4.jpg" alt="Galería" />
+                    <h3><a href="galeria.html">Galería</a></h3>
+                </article>
+                <article class="tarjeta-trabajo">
+                    <img src="img/mesa5.jpg" alt="Contacto" />
+                    <h3><a href="contacto.html">Contacto</a></h3>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 La Magia de Carol - Todos los derechos reservados</p>
+    </footer>
+
+    <div class="varita-chat-wrapper" id="varitaWrapper">
+        <button class="btn-varita" id="btnVarita" type="button" aria-label="Abrir el chat de la varita">
+            <img id="varitaIcon" src="img/img/varita1.png" alt="Varita mágica" />
+        </button>
+        <div class="varita-bocadillo" id="varitaBocadillo" aria-hidden="true">
+            <span>hago chas y te monto una fiesta</span>
+        </div>
+        <div class="chatbot" id="chatbot" aria-hidden="true">
+            <div class="chatbot-header">
+                <span>Chat de la varita</span>
+                <button class="btn-close" id="btnCloseChat" aria-label="Cerrar chat">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="chatbot-message bot">Hola, soy tu asistente mágico. ¿En qué puedo ayudarte hoy?</div>
+            </div>
+            <form class="chatbot-form" id="chatForm">
+                <input type="text" id="chatInput" placeholder="Escribe tu pregunta" autocomplete="off" />
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="funcion.js"></script>
+</body>
+</html>

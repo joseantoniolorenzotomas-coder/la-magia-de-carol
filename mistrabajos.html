@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de mesas dulces realizadas por La Magia de Carol">
+    <title>Mis trabajos - La Magia de Carol</title>
+    <link rel="stylesheet" href="stilo.css">
+</head>
+<body>
+    <a href="https://wa.me/34654160403?text=Hola%20quiero%20informaci%C3%B3n"
+    class="btn-whatsapp"
+    target="_blank"
+    aria-label="Abrir WhatsApp">
+        <img width="40" src="img/logowat.png" alt="WhatsApp" />
+    </a>
+
+    <header class="cabecera">
+        <div class="marca">
+            <img src="img/logo_la_magia_de_carol.png" alt="Logo de La Magia de Carol" />
+            <div>
+                <h1>Mis trabajos</h1>
+                <p>Mesas dulces con estilo y emoción</p>
+            </div>
+        </div>
+        <nav class="menu-principal" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="sobre-mi.html">Mi historia</a>
+            <a href="mistrabajos.html">Mis trabajos</a>
+            <a href="galeria.html">Galería</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main id="content">
+        <section class="seccion seccion-destacada">
+            <div class="seccion-contenido">
+                <h2>Mis trabajos</h2>
+                <p>Cada evento cuenta una historia, y en La Magia de Carol nos encanta convertirla en una experiencia dulce, elegante y llena de detalles inolvidables.</p>
+                <p>En esta página puedes ver algunos trabajos realizados para bodas, cumpleaños, comuniones, bautizos y eventos corporativos.</p>
+            </div>
+            <h2 class="titulo-carrusel">Trabajos recientes</h2>
+            <div class="carrusel-mesas" data-carrusel>
+                <button class="carrusel-foto" type="button" data-ampliar-imagen aria-label="Ampliar imagen actual">
+                    <img src="img/imgMesas/3b4c2156-6299-44f0-b15a-e5df95850600.jpg" alt="Mesa dulce temática" />
+                </button>
+                <button class="carrusel-control carrusel-anterior" type="button" data-anterior aria-label="Imagen anterior">&#10094;</button>
+                <button class="carrusel-control carrusel-siguiente" type="button" data-siguiente aria-label="Imagen siguiente">&#10095;</button>
+                <span class="carrusel-contador" aria-live="polite"></span>
+            </div>
+            <dialog class="visor-imagen" aria-label="Vista ampliada de imagen">
+                <button class="visor-cerrar" type="button" data-cerrar-visor aria-label="Cerrar imagen">&times;</button>
+                <img src="" alt="" />
+            </dialog>
+        </section>
+
+        <section class="seccion seccion-blanca" id="historias">
+            <div class="seccion-contenido">
+                <h2>Historias recientes</h2>
+                <p>Momentos dulces compartidos por La Magia de Carol.</p>
+            </div>
+            <p class="estado-historias" data-estado-historias role="status">Las historias publicadas aparecerán aquí.</p>
+            <div class="historias-publicadas" data-historias-publicadas></div>
+
+            <details class="acceso-administracion">
+                <summary>Acceso de Carol</summary>
+                <form class="formulario-publicacion" data-formulario-acceso>
+                    <label>Correo electrónico
+                        <input type="email" name="correo" autocomplete="username" required />
+                    </label>
+                    <label>Contraseña
+                        <input type="password" name="contrasena" autocomplete="current-password" required />
+                    </label>
+                    <button type="submit">Iniciar sesión</button>
+                </form>
+                <form class="formulario-publicacion" data-formulario-historia hidden>
+                    <label>Título
+                        <input type="text" name="titulo" maxlength="90" required />
+                    </label>
+                    <label>Texto
+                        <textarea name="texto" maxlength="2000" rows="4" required></textarea>
+                    </label>
+                    <label>Imagen
+                        <input type="file" name="imagen" accept="image/jpeg,image/png,image/webp" required />
+                    </label>
+                    <button type="submit">Publicar historia</button>
+                </form>
+                <button class="cerrar-sesion" type="button" data-cerrar-sesion hidden>Cerrar sesión</button>
+                <p class="estado-administracion" data-estado-administracion role="status"></p>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 La Magia de Carol - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="funcion.js"></script>
+    <script src="historias.js"></script>
+</body>
+</html>
