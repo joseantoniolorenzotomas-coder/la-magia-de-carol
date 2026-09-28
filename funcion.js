@@ -308,3 +308,55 @@ function inicializarVisorImagen() {
 inicializarGaleriaImagenes();
 inicializarCarruseles();
 inicializarVisorImagen();
+
+/** Muestra una invitación al Instagram de Carol una sola vez por sesión. */
+function inicializarAvisoInstagram() {
+    const claveAviso = 'laMagiaCarolAvisoInstagramVisto';
+    try {
+        if (sessionStorage.getItem(claveAviso)) return;
+        sessionStorage.setItem(claveAviso, 'true');
+    } catch (error) {
+        // Continúa mostrando el aviso si el navegador bloquea el almacenamiento de sesión.
+    }
+
+    const dialogo = document.createElement('dialog');
+    const titulo = document.createElement('h2');
+    const cerrar = document.createElement('button');
+    const enlace = document.createElement('a');
+    const qr = document.createElement('img');
+    const usuario = document.createElement('span');
+
+    dialogo.className = 'aviso-instagram';
+    dialogo.setAttribute('aria-labelledby', 'titulo-aviso-instagram');
+    titulo.id = 'titulo-aviso-instagram';
+    titulo.textContent = 'Síguenos en Instagram';
+    cerrar.className = 'aviso-instagram-cerrar';
+    cerrar.type = 'button';
+    cerrar.setAttribute('aria-label', 'Cerrar aviso de Instagram');
+    cerrar.textContent = '×';
+    enlace.href = 'https://www.instagram.com/la_magia_de_carol/';
+    enlace.target = '_blank';
+    enlace.rel = 'noopener noreferrer';
+    enlace.setAttribute('aria-label', 'Abrir Instagram de La Magia de Carol');
+    qr.src = 'img/Captura de pantalla 2026-09-28 a las 18.10.23.png';
+    qr.alt = 'Código QR para visitar el Instagram de La Magia de Carol';
+    usuario.textContent = '@LA_MAGIA_DE_CAROL';
+    enlace.append(qr, usuario);
+    dialogo.append(cerrar, titulo, enlace);
+    document.body.appendChild(dialogo);
+
+    cerrar.addEventListener('click', () => dialogo.close());
+    enlace.addEventListener('click', () => dialogo.close());
+    dialogo.addEventListener('keydown', (evento) => {
+        if (evento.key === 'Escape') {
+            evento.preventDefault();
+            dialogo.close();
+        }
+    });
+    dialogo.addEventListener('click', (evento) => {
+        if (evento.target === dialogo) dialogo.close();
+    });
+    dialogo.showModal();
+}
+
+inicializarAvisoInstagram();
