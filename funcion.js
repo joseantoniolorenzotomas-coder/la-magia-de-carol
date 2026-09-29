@@ -1,3 +1,4 @@
+// Controles y movimiento de la varita.
 const btnVarita = document.getElementById('btnVarita');
 const chatbot = document.getElementById('chatbot');
 const btnCloseChat = document.getElementById('btnCloseChat');
@@ -15,6 +16,7 @@ function centrarVarita() {
     if (!varitaWrapper) return;
 
     varitaWrapper.style.transition = 'left 0.8s ease-out, top 0.8s ease-out';
+    varitaWrapper.style.right = 'auto';
     varitaWrapper.style.left = `${Math.round((window.innerWidth - varitaWrapper.offsetWidth) / 2)}px`;
     varitaWrapper.style.top = `${Math.round((window.innerHeight - varitaWrapper.offsetHeight) / 2)}px`;
 }
@@ -52,8 +54,11 @@ function moverVarita() {
 
     const ancho = varitaWrapper.offsetWidth || 80;
     const alto = varitaWrapper.offsetHeight || 80;
-    const x = Math.random() * Math.max(0, window.innerWidth - ancho - 20) + 10;
+    const anchoBocadillo = Math.min(180, Math.max(0, window.innerWidth - ancho - 28));
+    const maxX = Math.max(10, window.innerWidth - ancho - anchoBocadillo - 18);
+    const x = Math.random() * Math.max(0, maxX - 10) + 10;
     const y = Math.random() * Math.max(0, window.innerHeight - alto - 20) + 10;
+    varitaWrapper.style.right = 'auto';
     varitaWrapper.style.left = `${Math.round(x)}px`;
     varitaWrapper.style.top = `${Math.round(y)}px`;
     if (Math.random() > 0.5) cambiarIconoTemporal('img/img/varita2.png', 2000);
@@ -92,6 +97,7 @@ varitaWrapper?.addEventListener('mouseleave', () => {
 iniciarMovimientoAleatorio();
 window.addEventListener('beforeunload', detenerMovimiento);
 
+// Respuestas locales del chatbot y sus acciones disponibles.
 const enlaceGaleria = { texto: 'Ver galería de mesas dulces', url: 'galeria.html' };
 const enlaceWhatsApp = {
     texto: 'Escribir por WhatsApp',
@@ -186,6 +192,7 @@ chatInput?.addEventListener('keydown', (evento) => {
     }
 });
 
+// Fotografías compartidas por la cuadrícula y los carruseles.
 const rutasImagenesMesas = [
     '3b4c2156-6299-44f0-b15a-e5df95850600.jpg',
     '4cafc98f-f5c4-4a62-a7c8-e4d310149d1f.jpg',
@@ -309,6 +316,7 @@ inicializarGaleriaImagenes();
 inicializarCarruseles();
 inicializarVisorImagen();
 
+// Aviso de Instagram y preferencias de almacenamiento del navegador.
 /** Muestra una invitación al Instagram de Carol una sola vez por sesión. */
 function inicializarAvisoInstagram() {
     const claveAviso = 'laMagiaCarolAvisoInstagramVisto';
@@ -338,7 +346,7 @@ function inicializarAvisoInstagram() {
     enlace.target = '_blank';
     enlace.rel = 'noopener noreferrer';
     enlace.setAttribute('aria-label', 'Abrir Instagram de La Magia de Carol');
-    qr.src = 'img/Captura de pantalla 2026-09-28 a las 18.10.23.png';
+    qr.src = 'img/insta.jpg';
     qr.alt = 'Código QR para visitar el Instagram de La Magia de Carol';
     usuario.textContent = '@LA_MAGIA_DE_CAROL';
     enlace.append(qr, usuario);
@@ -359,4 +367,111 @@ function inicializarAvisoInstagram() {
     dialogo.showModal();
 }
 
-inicializarAvisoInstagram();
+/** Guarda la elección de almacenamiento opcional y continúa según la preferencia. */
+function guardarPreferenciaCookies(aceptada, aviso) {
+    const decision = aceptada ? 'aceptado' : 'rechazado';
+    let decisionGuardada = false;
+
+    try {
+        localStorage.setItem('laMagiaCarolConsentimiento', decision);
+        decisionGuardada = true;
+    } catch (error) {
+        // Usa sessionStorage si localStorage está bloqueado.
+    }
+    if (!decisionGuardada) {
+        try {
+            sessionStorage.setItem('laMagiaCarolConsentimientoSesion', decision);
+        } catch (error) {
+            // La elección se aplica durante esta carga aunque falle el almacenamiento.
+        }
+    }
+
+    aviso.remove();
+    if (aceptada) inicializarAvisoInstagram();
+}
+
+/** Muestra opciones de consentimiento si aún no existe una elección guardada. */
+function inicializarPreferenciasCookies() {
+    let preferencia = null;
+    let avisoMostradoEnSesion = false;
+
+    try {
+        preferencia = localStorage.getItem('laMagiaCarolConsentimiento');
+    } catch (error) {
+        // Continúa con el almacenamiento de sesión si localStorage no está disponible.
+    }
+    try {
+        avisoMostradoEnSesion = sessionStorage.getItem('laMagiaCarolAvisoCookiesMostrado') === 'true';
+        preferencia ||= sessionStorage.getItem('laMagiaCarolConsentimientoSesion');
+    } catch (error) {
+        // La página puede seguir funcionando si el navegador bloquea el almacenamiento.
+    }
+
+    if (preferencia === 'aceptado') {
+        inicializarAvisoInstagram();
+        return;
+    }
+    if (preferencia === 'rechazado' || avisoMostradoEnSesion) return;
+
+    const aviso = document.createElement('section');
+    const titulo = document.createElement('h2');
+    const texto = document.createElement('p');
+    const enlaceLegal = document.createElement('a');
+    const acciones = document.createElement('div');
+    const rechazar = document.createElement('button');
+    const aceptar = document.createElement('button');
+
+    aviso.className = 'aviso-cookies';
+    aviso.setAttribute('role', 'region');
+    aviso.setAttribute('aria-labelledby', 'titulo-aviso-cookies');
+    titulo.id = 'titulo-aviso-cookies';
+    titulo.textContent = 'Preferencias de privacidad';
+    texto.textContent = 'Usamos almacenamiento del navegador para guardar tu elección y, si lo aceptas, no repetir en esta sesión el aviso de Instagram. No usamos analítica ni publicidad.';
+    enlaceLegal.href = 'legal.html#cookies';
+    enlaceLegal.textContent = 'Más información';
+    acciones.className = 'aviso-cookies-acciones';
+    rechazar.type = 'button';
+    rechazar.className = 'aviso-cookies-rechazar';
+    rechazar.textContent = 'Rechazar opcional';
+    aceptar.type = 'button';
+    aceptar.className = 'aviso-cookies-aceptar';
+    aceptar.textContent = 'Aceptar';
+    rechazar.addEventListener('click', () => guardarPreferenciaCookies(false, aviso));
+    aceptar.addEventListener('click', () => guardarPreferenciaCookies(true, aviso));
+    acciones.append(rechazar, aceptar);
+    aviso.append(titulo, texto, enlaceLegal, acciones);
+    document.body.appendChild(aviso);
+    try {
+        sessionStorage.setItem('laMagiaCarolAvisoCookiesMostrado', 'true');
+    } catch (error) {
+        // No impide mostrar el aviso si el navegador bloquea el almacenamiento.
+    }
+}
+
+/** Permite retirar la elección anterior y volver a mostrar las opciones. */
+function revisarPreferenciasCookies() {
+    try {
+        localStorage.removeItem('laMagiaCarolConsentimiento');
+    } catch (error) {
+        // La pantalla de preferencias sigue disponible aunque falle localStorage.
+    }
+    try {
+        sessionStorage.removeItem('laMagiaCarolConsentimientoSesion');
+        sessionStorage.removeItem('laMagiaCarolAvisoCookiesMostrado');
+        sessionStorage.removeItem('laMagiaCarolAvisoInstagramVisto');
+    } catch (error) {
+        // La pantalla de preferencias sigue disponible aunque falle sessionStorage.
+    }
+
+    document.querySelector('.aviso-cookies')?.remove();
+    const avisoInstagram = document.querySelector('.aviso-instagram');
+    avisoInstagram?.close();
+    avisoInstagram?.remove();
+    inicializarPreferenciasCookies();
+}
+
+document.querySelectorAll('[data-configurar-cookies]').forEach((boton) => {
+    boton.addEventListener('click', revisarPreferenciasCookies);
+});
+
+inicializarPreferenciasCookies();

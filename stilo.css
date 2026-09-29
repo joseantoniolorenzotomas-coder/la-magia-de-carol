@@ -1,3 +1,4 @@
+/* Reglas generales, cabecera y navegación compartidas. */
 * {
     box-sizing: border-box;
 }
@@ -12,7 +13,6 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-
 }
 
 body {
@@ -60,7 +60,7 @@ header.cabecera {
     width: 90px;
     height: auto;
     border-radius: 1rem;
-    border: 2px solid rgba(255,255,255,0.24);
+    border: 2px solid rgba(255, 255, 255, 0.24);
 }
 
 .marca h1 {
@@ -89,7 +89,7 @@ header.cabecera {
 
 .menu-principal a:hover,
 .menu-principal a:focus-visible {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-1px);
 }
 
@@ -99,6 +99,7 @@ main#content {
     padding: 2rem 0 4rem;
 }
 
+/* Secciones principales y portada. */
 .seccion {
     margin-bottom: 2rem;
     padding: 2rem;
@@ -212,6 +213,7 @@ main#content {
     font-size: 1.1rem;
 }
 
+/* Galería, carrusel y visor ampliado. */
 .galeria-imagenes {
     display: grid;
     gap: 1rem;
@@ -412,6 +414,7 @@ main#content {
     color: #fff;
 }
 
+/* Historias recientes y panel privado de publicación. */
 .historias-publicadas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
@@ -531,43 +534,12 @@ main#content {
     color: #204832;
 }
 
+/* Contacto y páginas legales. */
 .contacto-contenedor {
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr minmax(280px, 440px);
     align-items: start;
-}
-
-.formulario-contacto {
-    display: grid;
-    gap: 1rem;
-}
-
-.formulario-contacto label {
-    display: grid;
-    gap: 0.5rem;
-    font-weight: 600;
-}
-
-.formulario-contacto input,
-.formulario-contacto textarea {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(15, 84, 46, 0.2);
-    background: rgba(255,255,255,0.95);
-    resize: vertical;
-}
-
-.formulario-contacto button {
-    width: fit-content;
-    padding: 1rem 1.8rem;
-    border: none;
-    border-radius: 999px;
-    background: #c0076b;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
 }
 
 footer {
@@ -577,6 +549,135 @@ footer {
     padding: 20px;
 }
 
+footer a {
+    display: inline-block;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.documento-legal {
+    max-width: 900px;
+    margin-inline: auto;
+}
+
+.documento-legal > h2 {
+    line-height: 1.2;
+}
+
+.documento-legal section {
+    margin-top: 2rem;
+}
+
+.documento-legal h3 {
+    margin-bottom: 0.75rem;
+}
+
+.documento-legal p {
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+}
+
+.datos-legales-pendientes {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-left: 4px solid #a65a00;
+    background: #fff4e5;
+    color: #342614;
+    line-height: 1.6;
+}
+
+.nota-legal {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(16, 32, 31, 0.16);
+    color: #53635c;
+    font-size: 0.95rem;
+}
+
+.boton-preferencias-privacidad {
+    min-height: 44px;
+    padding: 0.7rem 1rem;
+    border: 1px solid #0f542e;
+    border-radius: 0.35rem;
+    background: #fff;
+    color: #0f542e;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.boton-preferencias-privacidad:hover,
+.boton-preferencias-privacidad:focus-visible {
+    background: #0f542e;
+    color: #fff;
+}
+
+/* Aviso y preferencias de privacidad. */
+.aviso-cookies {
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 10001;
+    width: min(620px, calc(100vw - 2rem));
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(16, 32, 31, 0.2);
+    border-top: 4px solid #0f542e;
+    border-radius: 0.5rem;
+    background: #fff;
+    color: #10201f;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.24);
+}
+
+.aviso-cookies h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.35;
+}
+
+.aviso-cookies p {
+    margin: 0 0 0.5rem;
+    line-height: 1.5;
+}
+
+.aviso-cookies > a {
+    color: #0f542e;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.aviso-cookies-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 0.9rem;
+}
+
+.aviso-cookies-acciones button {
+    min-height: 44px;
+    flex: 1 1 150px;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid #0f542e;
+    border-radius: 0.35rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.aviso-cookies-rechazar {
+    background: #fff;
+    color: #0f542e;
+}
+
+.aviso-cookies-aceptar {
+    background: #0f542e;
+    color: #fff;
+}
+
+.aviso-cookies-acciones button:hover,
+.aviso-cookies-acciones button:focus-visible {
+    outline: 3px solid rgba(192, 7, 107, 0.45);
+    outline-offset: 2px;
+}
+
+/* Accesos flotantes y asistente de la varita. */
 .btn-whatsapp {
     position: fixed;
     bottom: 20px;
@@ -603,12 +704,14 @@ footer {
     left: auto;
     right: 1.25rem;
     bottom: auto;
+    width: 72px;
+    height: 72px;
     display: grid;
     gap: 0.85rem;
     align-items: end;
-    z-index: 30;
+    z-index: 9999;
     will-change: left, top;
-    transition: left 1s ease, top 1s ease;
+    transition: left 8s linear, top 8s linear;
 }
 
 .btn-varita {
@@ -635,45 +738,38 @@ footer {
 
 .btn-varita:hover,
 .btn-varita:focus-visible {
-    transform: scale(2);
+    transform: scale(1.08);
 }
 
 .varita-bocadillo {
     position: absolute;
-    right: 8px;
-        bottom: calc(100% + 4px);
-    background: rgba(43, 228, 182, 0.96);
-    color: #1e3d2c;
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: calc(100% + 8px);
+    width: max-content;
+    max-width: min(180px, calc(100vw - 108px));
     padding: 0.65rem 0.85rem;
-    border-radius: 1rem;
     border: 1px solid rgba(16, 32, 31, 0.12);
+    border-radius: 1rem;
+    background: rgba(43, 228, 182, 0.96);
+    color: #000;
     box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
-    max-width: 180px;
-    transform: translateY(2px) scale(0.98);
-    transition: opacity 0.18s ease, transform 0.18s ease;
-    pointer-events: none;
+    transform: translateY(-50%) translateX(-4px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
     font-size: 0.92rem;
     line-height: 1.35;
-    position: absolute;    /* Lo situamos justo encima de la varita */
-    bottom: 100%; 
-    left: 50%;
-    transform: translateX(-50%); /* Centrado horizontalmente sobre el ícono */
-    margin-bottom: 10px; /* Separación vertical */
-    
-    /* Evita que rompa línea o cree scroll extra */
-    white-space: nowrap; 
-    
-    /* Estado inicial: oculto */
+    overflow-wrap: break-word;
+    white-space: normal;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
     pointer-events: none;
 }
 
-/* Cuando se añade la clase .visible desde JS */
 #varitaBocadillo.visible {
     opacity: 1;
     visibility: visible;
+    transform: translateY(-50%) translateX(0);
 }
 
 .chatbot {
@@ -795,6 +891,7 @@ footer {
     cursor: pointer;
 }
 
+/* Ajustes de distribución para pantallas pequeñas. */
 @media (max-width: 900px) {
     .seccion-hero {
         grid-template-columns: 1fr;
@@ -817,15 +914,15 @@ footer {
     .seccion {
         padding: 1.5rem;
     }
+
+    .aviso-cookies {
+        bottom: 5.5rem;
+        max-height: calc(100vh - 7rem);
+        overflow: auto;
+        padding: 0.9rem;
+    }
 }
 
-#varitaWrapper {
-    position: fixed;
-    /* La transición debe durar bastante tiempo para que el viaje sea lento */
-    transition: left 8s linear, top 8s linear;
-    will-change: left, top;
-    z-index: 9999;
-}
 
 /* 
  Usamos 'transform: translate' en lugar de top/left.
@@ -837,62 +934,23 @@ footer {
         transform: translate(5vw, 10vh) rotate(-5deg);
     }
     20% {
-        /* Borde Izquierdo - Abajo */
         transform: translate(3vw, 65vh) rotate(8deg);
+
     }
+
     40% {
-        /* Transición lenta cruzando hacia Borde Derecho - Centro */
+
+        /* Transición lenta cruzando hacia el borde derecho */
         transform: translate(82vw, 40vh) rotate(-12deg);
     }
     65% {
-        /* Borde Derecho - Arriba */
         transform: translate(85vw, 15vh) rotate(6deg);
     }
     85% {
-        /* Borde Derecho - Abajo */
         transform: translate(80vw, 70vh) rotate(-4deg);
     }
     100% {
-        /* Regresa al punto cercano al inicio */
         transform: translate(6vw, 20vh) rotate(5deg);
     }
 }
 
-/* Si el usuario pasa el ratón por encima, la congelamos suavemente para que pueda hacer clic fácilmente */
-#varitaWrapper:hover {
-    animation-play-state: paused;
-}
-
-#chatMensajesContenedor {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-    max-height: 350px;
-    overflow-y: auto;
-}
-
-.mensaje-chat {
-    max-width: 80%;
-    padding: 10px 14px;
-    border-radius: 15px;
-    font-size: 0.9em;
-    line-height: 1.4;
-    word-wrap: break-word;
-}
-
-/* Estilo para los mensajes del USUARIO (alineados a la derecha) */
-.mensaje-chat.usuario {
-    align-self: flex-end;
-    background-color: #ff6b81; /* O el color corporativo de tu marca */
-    color: white;
-    border-bottom-right-radius: 2px;
-}
-
-/* Estilo para las respuestas del BOT (alineadas a la izquierda) */
-.mensaje-chat.bot {
-    align-self: flex-start;
-    background-color: #f1f2f6;
-    color: #2f3542;
-    border-bottom-left-radius: 2px;
-}
